@@ -1,6 +1,6 @@
-import { chain, useAccount, useDisconnect, useSignMessage } from 'wagmi'
-import { SiweMessage } from 'siwe'
 import useAuth from './useAuth'
+import { SiweMessage } from 'siwe'
+import { chain, useAccount, useDisconnect, useSignMessage } from 'wagmi'
 
 const useLogin = (): { login: () => Promise<void>; logout: () => Promise<void> } => {
 	const { mutate } = useAuth()

@@ -1,8 +1,8 @@
-import { NextApiRequest, NextApiResponse } from '@/types/next'
 import prisma from '@/prisma/client'
-import { withSession } from '@/lib/session'
 import { client } from '@/lib/apollo'
+import { withSession } from '@/lib/session'
 import GET_PROFILE from '@/graphql/profiles/get-profile'
+import { NextApiRequest, NextApiResponse } from '@/types/next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (!req.session.address) return res.status(403).send('Unauthenticated.')

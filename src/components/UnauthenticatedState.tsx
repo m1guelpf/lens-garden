@@ -1,6 +1,6 @@
 import { FC } from 'react'
-import { LoginIcon } from '@heroicons/react/outline'
 import ConnectWallet from './ConnectWallet'
+import { LoginIcon } from '@heroicons/react/outline'
 
 const UnauthenticatedState: FC = () => {
 	return (

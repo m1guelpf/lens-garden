@@ -1,6 +1,6 @@
 import { generateNonce } from 'siwe'
-import { NextApiRequest, NextApiResponse } from '@/types/next'
 import { withSession } from '@/lib/session'
+import { NextApiRequest, NextApiResponse } from '@/types/next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	req.session.nonce = generateNonce()

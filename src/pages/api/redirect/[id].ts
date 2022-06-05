@@ -1,9 +1,9 @@
-import { NextApiRequest, NextApiResponse } from '@/types/next'
-import prisma from '@/prisma/client'
 import { isBot } from '@/lib/utils'
+import prisma from '@/prisma/client'
 import { client } from '@/lib/apollo'
-import DOES_FOLLOW from '@/graphql/follow/doesFollow'
 import { withSession } from '@/lib/session'
+import DOES_FOLLOW from '@/graphql/follow/doesFollow'
+import { NextApiRequest, NextApiResponse } from '@/types/next'
 
 const handler = async (req: NextApiRequest<{ id: string }>, res: NextApiResponse) => {
 	const link = await prisma.link.findUnique({ where: { id: parseInt(req.query.id) } })

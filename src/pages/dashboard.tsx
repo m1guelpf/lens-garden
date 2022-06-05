@@ -6,13 +6,17 @@ import { Link } from '@prisma/client'
 import Button from '@/components/Button'
 import Layout from '@/components/Layout'
 import { useQuery } from '@apollo/client'
+import useFollowing from '@/hooks/useFollowing'
+import { MIGUEL_PROFILE_ID } from '@/lib/consts'
 import { FormEventHandler, useState } from 'react'
 import GET_PROFILES from '@/graphql/profiles/get-profiles'
+import MiguelFollowState from '@/components/MiguelFollowState'
 import UnauthenticatedState from '@/components/UnauthenticatedState'
 import { ClipboardCheckIcon, ClipboardCopyIcon, LinkIcon, PencilAltIcon, TrashIcon } from '@heroicons/react/outline'
 
 const Dashboard = () => {
 	const { address } = useAuth()
+	const isFollowing = useFollowing(MIGUEL_PROFILE_ID)
 	const [justCopied, setJustCopied] = useState<boolean>(false)
 	const [isCreating, setCreating] = useState<boolean>(false)
 	const [linkId, setLinkId] = useState<number>(null)
@@ -104,6 +108,7 @@ const Dashboard = () => {
 		<Layout>
 			{(() => {
 				if (!address) return <UnauthenticatedState />
+				if (!isFollowing) return <MiguelFollowState />
 
 				return (
 					<div className="px-4 sm:px-6 lg:px-8">

@@ -1,9 +1,9 @@
-import { NextApiRequest, NextApiResponse } from '@/types/next'
 import prisma from '@/prisma/client'
-import { withSession } from '@/lib/session'
-import GET_PROFILES from '@/graphql/profiles/get-profiles'
 import { client } from '@/lib/apollo'
+import { withSession } from '@/lib/session'
 import GET_PROFILE from '@/graphql/profiles/get-profile'
+import GET_PROFILES from '@/graphql/profiles/get-profiles'
+import { NextApiRequest, NextApiResponse } from '@/types/next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	if (req.method == 'GET') return getLink(req, res)

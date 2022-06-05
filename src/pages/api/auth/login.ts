@@ -1,6 +1,6 @@
 import { SiweMessage } from 'siwe'
-import { NextApiRequest, NextApiResponse } from '@/types/next'
 import { withSession } from '@/lib/session'
+import { NextApiRequest, NextApiResponse } from '@/types/next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 	const message = new SiweMessage(req.body.message)

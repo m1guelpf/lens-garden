@@ -1,8 +1,8 @@
-import dynamic from 'next/dynamic'
+import Meta from './Meta'
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { FC, ReactNode } from 'react'
 import { Toaster } from 'react-hot-toast'
-import Meta from './Meta'
 const ConnectWallet = dynamic(() => import('@/components/ConnectWallet'), { ssr: false })
 
 const Layout: FC<{ children: ReactNode | ReactNode[] }> = ({ children }) => {

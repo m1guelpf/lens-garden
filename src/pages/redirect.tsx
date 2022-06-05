@@ -1,15 +1,14 @@
 import useSWR from 'swr'
 import Error from 'next/error'
+import { useEffect } from 'react'
+import Meta from '@/components/Meta'
 import useAuth from '@/hooks/useAuth'
 import { Link } from '@prisma/client'
 import { useRouter } from 'next/router'
 import Layout from '@/components/Layout'
-import { useQuery } from '@apollo/client'
-import { useEffect, useMemo } from 'react'
-import DOES_FOLLOW from '@/graphql/follow/doesFollow'
+import useFollowing from '@/hooks/useFollowing'
 import NeedsFollowState from '@/components/NeedsFollowState'
 import UnauthenticatedState from '@/components/UnauthenticatedState'
-import Meta from '@/components/Meta'
 
 const Redirect = () => {
 	const {
@@ -20,14 +19,7 @@ const Redirect = () => {
 		() => linkId && `/api/links/${linkId}`,
 		url => fetch(url).then(res => res.json())
 	)
-	const { data: followData } = useQuery(DOES_FOLLOW, {
-		variables: { address, profileId: link?.profileId },
-		skip: !address || !link,
-	})
-
-	const isFollowing = useMemo(() => {
-		return followData?.doesFollow?.[0]?.follows ?? false
-	}, [followData])
+	const isFollowing = useFollowing(link?.profileId)
 
 	useEffect(() => {
 		if (!link || !address || !isFollowing) return

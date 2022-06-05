@@ -1,13 +1,8 @@
+import { FC } from 'react'
+import Button from './Button'
 import useAuth from '@/hooks/useAuth'
 import useLogin from '@/hooks/useLogin'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { FC, useEffect } from 'react'
-import toast from 'react-hot-toast'
-import { SiweMessage } from 'siwe'
-import { chain, useAccount, useDisconnect, useSignMessage } from 'wagmi'
-import Button from './Button'
-
-type Visibility = 'always' | 'connected' | 'not_connected'
 
 const ConnectWallet: FC = () => {
 	const { address } = useAuth()

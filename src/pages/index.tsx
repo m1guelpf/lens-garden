@@ -1,5 +1,3 @@
-import Button from '@/components/Button'
-import Pressable from '@/components/Pressable'
 import Link from 'next/link'
 
 const Home = () => {

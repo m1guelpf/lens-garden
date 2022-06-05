@@ -1,5 +1,5 @@
-import { AllHTMLAttributes, FC } from 'react'
 import Pressable from './Pressable'
+import { AllHTMLAttributes, FC } from 'react'
 
 const Button: FC<AllHTMLAttributes<HTMLButtonElement>> = ({ className = '', ...props }) => {
 	return (
